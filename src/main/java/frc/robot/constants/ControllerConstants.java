@@ -7,7 +7,6 @@ public class ControllerConstants {
     
     public static double CONTROLLER_DEADBAND = 0.02;
 
-
     // Inverts 
     public static final boolean DRIVE_CONTROL_ROTATION_INVERT = false;
     public static final boolean DRIVE_CONTROL_X_INVERT = false;

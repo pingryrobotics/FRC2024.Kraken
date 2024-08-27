@@ -5,6 +5,7 @@ import java.io.File;
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj2.command.button.CommandPS5Controller;
 import frc.robot.constants.ControllerConstants;
 import frc.robot.constants.DriveConstants;
@@ -12,8 +13,8 @@ import swervelib.SwerveDrive;
 import swervelib.SwerveModule;
 import swervelib.parser.SwerveParser;
 
-public class Drivetrain {
-    SwerveDrive swerveDrive;
+public class Drivetrain extends SubsystemBase {
+    private SwerveDrive swerveDrive;
     private boolean isFieldRelative = true;
 
     public Drivetrain(File configDirectory) {
@@ -28,6 +29,7 @@ public class Drivetrain {
 
         for (SwerveModule module : modules) {
             module.getAngleMotor().factoryDefaults();
+            module.getDriveMotor().factoryDefaults();
             module.getAngleMotor().setMotorBrake(true);
         }
     }
