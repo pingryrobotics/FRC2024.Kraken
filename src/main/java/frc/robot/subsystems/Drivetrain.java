@@ -7,23 +7,31 @@ import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj2.command.button.CommandPS5Controller;
+import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.constants.ControllerConstants;
 import frc.robot.constants.DriveConstants;
 import swervelib.SwerveDrive;
 import swervelib.SwerveModule;
 import swervelib.parser.SwerveParser;
+import swervelib.telemetry.SwerveDriveTelemetry;
+import swervelib.telemetry.SwerveDriveTelemetry.TelemetryVerbosity;
 
 public class Drivetrain extends SubsystemBase {
     private SwerveDrive swerveDrive;
     private boolean isFieldRelative = true;
-
+    
     public Drivetrain(File configDirectory) {
         try {
+            SwerveDriveTelemetry.verbosity = TelemetryVerbosity.HIGH;
             swerveDrive = new SwerveParser(configDirectory).createSwerveDrive(DriveConstants.MAX_SPEED);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     
+
+        swerveDrive.replaceSwerveModuleFeedforward(DriveConstants.DRIVE_FEED_FORWARD);
+        
+        swerveDrive.setHeadingCorrection(false); // Heading correction should only be used while controlling the robot via angle.
 
         SwerveModule[] modules = swerveDrive.getModules();
 

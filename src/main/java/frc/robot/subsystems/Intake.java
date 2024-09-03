@@ -28,8 +28,8 @@ public class Intake extends SubsystemBase {
     }
 
     public void setSpeed(double speed) {
-        frontMotor.set(0);
-        rearMotor.set(0);
+        frontMotor.set(speed);
+        rearMotor.set(speed);
     }
 
 }

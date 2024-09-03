@@ -14,6 +14,7 @@ import frc.robot.subsystems.Intake;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.CommandPS5Controller;
+import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 
 
 public class RobotContainer {
@@ -25,26 +26,25 @@ public class RobotContainer {
   private final Intake intake = new Intake();
 
 
-  // Replace with CommandPS4Controller or CommandJoystick if needed
+  
   private final CommandPS5Controller DriverController = new CommandPS5Controller(ControllerConstants.DRIVER_CONTROLLER_PORT);
   private final CommandPS5Controller OperatorController = new CommandPS5Controller(ControllerConstants.OPERATOR_CONTROLLER_PORT);
 
-  /** The container for the robot. Contains subsystems, OI devices, and commands. */
+
   public RobotContainer() {
     // Configure the trigger bindings
-    configureBindings();
+    configureDriverBindings();
+    configureOperatorBindings();
+
+    drivetrain.setDefaultCommand(Commands.run(() -> {drivetrain.setInputFromController(DriverController);}, drivetrain));
   }
-
-
-  private void configureBindings() {
+  private void configureDriverBindings() {
+    
+  }
+  private void configureOperatorBindings() {
     
   }
 
-  /**
-   * Use this to pass the autonomous command to the main {@link Robot} class.
-   *
-   * @return the command to run in autonomous
-   */
   public Command getAutonomousCommand() {
     // An example command will be run in autonomous
     return Commands.none();
