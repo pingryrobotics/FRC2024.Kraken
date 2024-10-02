@@ -11,19 +11,18 @@ import frc.robot.constants.DriveConstants;
 import frc.robot.subsystems.Drivetrain;
 
 import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.Shooter;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.CommandPS5Controller;
-import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 
 
 public class RobotContainer {
 
- 
-
   // Instantiate subsystems
   private final Drivetrain drivetrain = new Drivetrain(DriveConstants.CONFIG_FOLDER);
-  private final Intake intake = new Intake();
+  //private final Intake intake = new Intake();
+  //private final Shooter shooter = new Shooter();
 
 
   
@@ -35,7 +34,7 @@ public class RobotContainer {
     // Configure the trigger bindings
     configureDriverBindings();
     configureOperatorBindings();
-
+      
     drivetrain.setDefaultCommand(Commands.run(() -> {drivetrain.setInputFromController(DriverController);}, drivetrain));
   }
   private void configureDriverBindings() {
