@@ -11,12 +11,12 @@
     },
     "angle": {
       "type": "talonfx",
-      "id": 12,
+      "id": 11,
       "canbus": null
     },
     "encoder": {
       "type": "cancoder",
-      "id": 11,
+      "id": 12,
       "canbus": null
     },
     "inverted": {
